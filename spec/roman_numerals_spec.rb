@@ -56,7 +56,7 @@ describe RomanNumerals do
     end
 
     it "should return 'XLVIII' when passed 49" do
-      expect(roman_numeral.convert(49)).to eq "XLVIII"
+      expect(roman_numeral.convert(49)).to eq "XLIX"
     end
 
 end
