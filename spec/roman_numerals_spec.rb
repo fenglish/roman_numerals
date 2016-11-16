@@ -55,8 +55,19 @@ describe RomanNumerals do
       expect(roman_numeral.convert(11)).to eq "XI"
     end
 
-    it "should return 'XLVIII' when passed 49" do
+    it "should return 'XLIX' when passed 49" do
       expect(roman_numeral.convert(49)).to eq "XLIX"
     end
 
+    it "should return 'LXXXVIII' when passed 88" do
+      expect(roman_numeral.convert(88)).to eq "LXXXVIII"
+    end
+
+    it "should return 'CCXLIII' when passed 243" do
+      expect(roman_numeral.convert(243)).to eq "CCXLIII"
+    end
+
+    it "should return 'MCCXLIII' when passed 1243" do
+      expect(roman_numeral.convert(1243)).to eq "MCCXLIII"
+    end
 end

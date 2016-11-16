@@ -9,13 +9,27 @@ class RomanNumerals
 
   def convert(number)
     return @roman_numerals[number].to_s if !@roman_numerals[number].nil?
-    place = number / 10
-    ten_place = place
+
+    #convert the thousand's place
+    thousand_place = number / 1000
+    process( 1000, thousand_place )
+
+    #convert the hundred's place
+    place = number - thousand_place * 1000
+    hundred_place = place / 100
+    process( 100, hundred_place )
+
+    #convert the ten's place
+    place = place - hundred_place * 100
+    ten_place = place / 10
     process( 10, ten_place )
 
-    one_place = number - ten_place * 10
+    #convert the one place
+    one_place = place - ten_place * 10
     process( 1, one_place )
+
     @answer.inject(:+)
+
   end
 
   def process( place , place_digit )
