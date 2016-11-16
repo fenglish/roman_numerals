@@ -1,5 +1,7 @@
 class RomanNumerals
 
+  ONE, TEN, HUNDRED, THOUSAND = 1, 10, 100, 1000
+
   def initialize
     @answer = []
     @roman_numerals = { 1   => :I, 4   => :IV, 5   => :V, 9   => :IX,
@@ -11,22 +13,22 @@ class RomanNumerals
     return @roman_numerals[number].to_s if !@roman_numerals[number].nil?
 
     #convert the thousand's place
-    thousand_place = number / 1000
-    process( 1000, thousand_place )
+    thousand_place = number / THOUSAND
+    process( THOUSAND, thousand_place )
 
     #convert the hundred's place
-    place = number - thousand_place * 1000
-    hundred_place = place / 100
-    process( 100, hundred_place )
+    left = number - thousand_place * THOUSAND
+    hundred_place = left / HUNDRED
+    process( HUNDRED, hundred_place )
 
     #convert the ten's place
-    place = place - hundred_place * 100
-    ten_place = place / 10
-    process( 10, ten_place )
+    left = left - hundred_place * HUNDRED
+    ten_place = left / TEN
+    process( TEN, ten_place )
 
     #convert the one place
-    one_place = place - ten_place * 10
-    process( 1, one_place )
+    one_place = left - ten_place * TEN
+    process( ONE, one_place )
 
     @answer.inject(:+)
 
