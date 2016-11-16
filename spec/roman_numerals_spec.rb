@@ -51,5 +51,12 @@ describe RomanNumerals do
       expect(roman_numeral.convert(6)).to eq "VI"
     end
 
+    it "should return 'XI' when passed 11" do
+      expect(roman_numeral.convert(11)).to eq "XI"
+    end
+
+    it "should return 'XLVIII' when passed 49" do
+      expect(roman_numeral.convert(49)).to eq "XLVIII"
+    end
 
 end
