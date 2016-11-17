@@ -10,9 +10,10 @@ class RomanNumerals
   end
 
   def convert( number )
+
     @number = number
     fail "Can't convert number over 4000." if @number > 4000
-    return @roman_numerals[number].to_s if in_roman_numerals_hash?
+    return @roman_numerals[ @number ].to_s if in_roman_numerals_hash?
 
     target = number.to_s.split("")
 
