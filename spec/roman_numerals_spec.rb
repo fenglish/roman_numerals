@@ -59,12 +59,20 @@ describe RomanNumerals do
   end
 
   context "four-digit" do
-    it "should return 'M' when passed 1000" do
-      expect(roman_numeral.convert(1000)).to eq "M"
+    context "when less than 4000" do
+      it "should return 'M' when passed 1000" do
+        expect(roman_numeral.convert(1000)).to eq "M"
+      end
+      it "should return 'MCCXLIII' when passed 1243" do
+        expect(roman_numeral.convert(1243)).to eq "MCCXLIII"
+      end
     end
-    it "should return 'MCCXLIII' when passed 1243" do
-      expect(roman_numeral.convert(1243)).to eq "MCCXLIII"
+    context "when more than 4000" do
+      it "should return error" do
+        expect{ roman_numeral.convert(4001) }.to raise_error "Can't convert number over 4000."
+      end
     end
   end
+
 
 end
