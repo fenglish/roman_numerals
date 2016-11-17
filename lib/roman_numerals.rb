@@ -10,33 +10,27 @@ class RomanNumerals
   end
 
   def convert( number )
+    @number = number
+    fail "Can't convert number over 4000." if @number > 4000
+    return @roman_numerals[number].to_s if in_roman_numerals_hash?
 
-    fail "Can't convert number over 4000." if number > 4000
-    return @roman_numerals[number].to_s if !@roman_numerals[number].nil?
+    target = number.to_s.split("")
 
     #convert the thousand's place
-    thousand_place = number / THOUSAND
-    process( THOUSAND, thousand_place )
-
+    process( THOUSAND, target[-4].to_i )
     #convert the hundred's place
-    left = number - thousand_place * THOUSAND
-    hundred_place = left / HUNDRED
-    process( HUNDRED, hundred_place )
-
+    process( HUNDRED, target[-3].to_i )
     #convert the ten's place
-    left = left - hundred_place * HUNDRED
-    ten_place = left / TEN
-    process( TEN, ten_place )
-
+    process( TEN, target[-2].to_i )
     #convert the one place
-    one_place = left - ten_place * TEN
-    process( ONE, one_place )
+    process( ONE, target[-1].to_i )
 
     @answer.inject(:+)
 
   end
 
   def process( place , place_digit )
+
     if place * 4 == place_digit * place
       place_digit -= 4
       @answer << @roman_numerals[ place * 4 ].to_s
@@ -48,6 +42,11 @@ class RomanNumerals
       @answer << @roman_numerals[ place * 5 ].to_s
     end
     place_digit.times{ @answer << @roman_numerals[ place ].to_s }
+
+  end
+
+  def in_roman_numerals_hash?
+    !@roman_numerals[ @number ].nil?
   end
 
 end
