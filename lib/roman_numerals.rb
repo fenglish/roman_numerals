@@ -9,7 +9,7 @@ class RomanNumerals
                         100 => :C, 400 => :CD, 500 => :D, 900 => :CM, 1000 => :M}
   end
 
-  def convert(number)
+  def convert( number )
 
     fail "Can't convert number over 4000." if number > 4000
     return @roman_numerals[number].to_s if !@roman_numerals[number].nil?

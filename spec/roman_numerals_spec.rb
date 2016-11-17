@@ -66,6 +66,9 @@ describe RomanNumerals do
       it "should return 'MCCXLIII' when passed 1243" do
         expect(roman_numeral.convert(1243)).to eq "MCCXLIII"
       end
+      it "should return 'MMMCMXCIX' when passed 3999" do
+        expect(roman_numeral.convert(3999)).to eq "MMMCMXCIX"
+      end
     end
     context "when more than 4000" do
       it "should return error" do
@@ -73,6 +76,5 @@ describe RomanNumerals do
       end
     end
   end
-
 
 end
